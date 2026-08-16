@@ -24,8 +24,14 @@ function App() {
         <Hero />
         <Suspense fallback={<SectionFallback />}>
           <Skills />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
           <Projects />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
           <Experience />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
           <Resume />
         </Suspense>
       </main>

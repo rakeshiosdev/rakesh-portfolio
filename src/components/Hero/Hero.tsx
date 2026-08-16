@@ -103,7 +103,7 @@ export default function Hero() {
           <div className="hero__profile">
             <div className="hero__profile-ring">
               <img
-                src="/profile.jpg"
+                src="/profile.webp"
                 alt={`${siteConfig.name} profile`}
                 className="hero__profile-image"
               />
