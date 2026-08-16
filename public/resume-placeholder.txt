@@ -1,0 +1,6 @@
+This is a placeholder.
+
+Replace this file with your real resume, saved as:
+public/resume.pdf
+
+The "Download Resume" buttons on the site link to /resume.pdf.

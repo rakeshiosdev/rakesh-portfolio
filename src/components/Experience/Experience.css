@@ -1,0 +1,137 @@
+.experience__timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.experience__entry {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: var(--space-md);
+}
+
+.experience__marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.experience__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border-strong);
+  background: var(--color-bg);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.experience__dot.is-current {
+  border-color: var(--color-signal);
+  background: var(--color-signal);
+  box-shadow: 0 0 0 4px var(--color-signal-bg);
+}
+
+.experience__line {
+  flex: 1;
+  width: 2px;
+  background: var(--color-border);
+  margin-top: 4px;
+}
+
+.experience__entry:last-child .experience__line {
+  display: none;
+}
+
+.experience__card {
+  padding-bottom: var(--space-2xl);
+}
+
+.experience__entry:last-child .experience__card {
+  padding-bottom: var(--space-3xs);
+  /* padding-bottom: 0; */
+}
+
+.experience__card-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-2xs);
+}
+
+.experience__dates {
+  font-size: var(--fs-xs);
+  color: var(--color-warm);
+}
+
+.experience__current-badge {
+  border-color: var(--color-signal);
+  color: var(--color-signal);
+}
+
+.experience__role {
+  font-size: var(--fs-lg);
+  margin-bottom: 2px;
+}
+
+.experience__company {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-sm);
+  margin-bottom: var(--space-md);
+}
+
+.experience__responsibilities {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  margin-bottom: var(--space-md);
+}
+
+.experience__responsibilities li {
+  position: relative;
+  padding-left: var(--space-md);
+  color: var(--color-text-secondary);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+}
+
+.experience__responsibilities li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-text-tertiary);
+}
+
+.experience__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+}
+
+.training__container {
+  display: flex;
+  gap: var(--space-2xs);
+  align-items: flex-end;
+}
+
+.training__container p {
+  margin: 0;
+  border-color: var(--color-signal);
+  color: var(--color-signal);
+}
+
+.training__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  margin-top: 16px;
+}
+
+@media (min-width: 640px) {
+  .experience__entry {
+    grid-template-columns: 28px 1fr;
+  }
+}

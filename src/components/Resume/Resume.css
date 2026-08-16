@@ -1,0 +1,29 @@
+.resume {
+  background: var(--color-bg-elevated);
+}
+
+.resume__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  align-items: flex-start;
+}
+
+.resume__headline {
+  font-size: var(--fs-2xl);
+  max-width: 20ch;
+}
+
+.resume__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+@media (min-width: 768px) {
+  .resume__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
