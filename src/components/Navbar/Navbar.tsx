@@ -4,23 +4,25 @@ import { useScrollSpy } from "../../hooks/useScrollSpy";
 import { useTheme } from "../../hooks/useTheme";
 import "./Navbar.css";
 
+const sectionIds = siteConfig.nav.map((item) => item.id);
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const { theme, toggleTheme } = useTheme();
-
-  const sectionIds = siteConfig.nav.map((item) => item.id);
   const activeId = useScrollSpy(sectionIds);
 
+  // Toggle hamburger menu
   const handleHamburgerButtonToggle = () => {
-    setMenuOpen(!menuOpen);
+    setMenuOpen((previous) => !previous);
   };
 
+  // Navbar scroll state
   useEffect(() => {
-    function handleScroll() {
+    const handleScroll = () => {
       setScrolled(window.scrollY > 12);
-    }
+    };
 
     handleScroll();
 
@@ -33,6 +35,7 @@ export default function Navbar() {
     };
   }, []);
 
+  // Close mobile menu when switching to desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 900) {
@@ -40,14 +43,17 @@ export default function Navbar() {
       }
     };
 
-    // Listen for browser resize
     window.addEventListener("resize", handleResize);
 
-    // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [menuOpen]);
+  }, []);
+
+  // Close mobile menu when clicking a navigation link
+  const handleNavClick = () => {
+    setMenuOpen(false);
+  };
 
   return (
     <>
@@ -68,6 +74,7 @@ export default function Navbar() {
                 <a
                   href={`#${item.id}`}
                   className={activeId === item.id ? "is-active" : ""}
+                  aria-current={activeId === item.id ? "page" : undefined}
                 >
                   {item.label}
                 </a>
@@ -147,30 +154,37 @@ export default function Navbar() {
 
       {/* =========================
           Mobile Navigation
-          IMPORTANT:
-          Outside <header>
       ========================== */}
       <div
         id="mobile-nav"
         className={`mobile-nav ${menuOpen ? "is-open" : ""}`}
       >
         <ul>
-          {siteConfig.nav.map((item, i) => (
-            <li
-              key={item.id}
-              style={{
-                transitionDelay: `${i * 35}ms`,
-              }}
-            >
-              <a href={`#${item.id}`} onClick={() => setMenuOpen(false)}>
-                <span className="mono mobile-nav__index">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+          {siteConfig.nav.map((item, index) => {
+            const isActive = activeId === item.id;
 
-                {item.label}
-              </a>
-            </li>
-          ))}
+            return (
+              <li
+                key={item.id}
+                style={{
+                  transitionDelay: `${index * 35}ms`,
+                }}
+              >
+                <a
+                  href={`#${item.id}`}
+                  className={isActive ? "is-active" : ""}
+                  aria-current={isActive ? "page" : undefined}
+                  onClick={handleNavClick}
+                >
+                  <span className="mono mobile-nav__index">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </>

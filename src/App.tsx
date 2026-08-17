@@ -1,4 +1,3 @@
-
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import ScrollProgress from "./components/UI/ScrollProgress";
@@ -9,8 +8,10 @@ import Projects from "./components/Projects/Projects";
 import Experience from "./components/Experience/Experience";
 import Resume from "./components/Resume/Resume";
 import Footer from "./components/Footer/Footer";
+import { useActiveSection } from "./hooks/useActiveSection";
 
 function App() {
+  useActiveSection();
   return (
     <>
       <a href="#main" className="skip-link">
