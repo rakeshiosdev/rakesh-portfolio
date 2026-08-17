@@ -7,6 +7,9 @@
   display: grid;
   grid-template-columns: 24px 1fr;
   gap: var(--space-md);
+
+  content-visibility: auto;
+  contain-intrinsic-size: 300px;
 }
 
 .experience__marker {
