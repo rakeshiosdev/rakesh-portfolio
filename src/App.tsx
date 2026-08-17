@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import ScrollProgress from "./components/UI/ScrollProgress";
@@ -14,6 +15,7 @@ function App() {
   useActiveSection();
   return (
     <>
+      <Analytics />
       <a href="#main" className="skip-link">
         Skip to main content
       </a>
