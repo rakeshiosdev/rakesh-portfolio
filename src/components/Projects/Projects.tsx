@@ -10,7 +10,7 @@ import "./Projects.css";
 
 export default function Projects() {
   const [filter, setFilter] = useState<ProjectFilter>("All");
-  // const revealRef = useReveal<HTMLDivElement>();
+  const revealRef = useReveal<HTMLDivElement>();
 
   const filtered = useMemo(
     () =>
@@ -50,7 +50,7 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="projects__grid">
+        <div className="projects__grid reveal" ref={revealRef}>
           {filtered.map((project) => (
             <ProjectCard project={project} key={project.id} />
           ))}
