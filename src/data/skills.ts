@@ -65,6 +65,7 @@ export const skillGroups: SkillGroup[] = [
       "Git",
       "GitHub Actions",
       "CI/CD",
+      "Fastlane",
       "TestFlight",
       "App Store Connect",
       "ESA",
